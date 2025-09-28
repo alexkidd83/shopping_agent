@@ -1,66 +1,28 @@
 """
-Stubbed interface for interacting with Amazon.  In a real implementation
-this module would authenticate via Amazon’s API (if available) or use
-web scraping techniques to retrieve order history, current cart items and
-wishlist data.  The functions below return static data to illustrate
-the expected shape of responses.
-"""
+Fake Amazon API for testing the shopping agent.
 
+This module provides stub functions that return fake data for orders,
+cart items, and wishlist items. In a real implementation, these functions
+would access the Amazon API or scrape data.
+"""
 from typing import List, Dict
 import datetime
 
-
-def get_recent_orders() -> List[Dict[str, str]]:
-    """
-    Return a list of recent orders.  Each order includes an item name and
-    the purchase price.  In practice, you would include order date,
-    quantity, ASIN and other relevant metadata.
-    """
-    # Mocked data
+def get_recent_orders() -> List[Dict]:
+    """Return a list of recent Amazon orders with name, price, and date."""
     return [
-        {
-            "order_id": "123-4567890-1234567",
-            "item": "Wireless Mouse",
-            "price": "€25.00",
-            "purchase_date": (datetime.datetime.now() - datetime.timedelta(days=1)).isoformat(),
-        },
-        {
-            "order_id": "123-4567890-7654321",
-            "item": "USB-C Cable",
-            "price": "€8.99",
-            "purchase_date": (datetime.datetime.now() - datetime.timedelta(days=3)).isoformat(),
-        },
+        {"name": "PlayStation 5", "price": 499.0, "date": datetime.date.today().isoformat()},
+        {"name": "Coffee Grinder", "price": 89.0, "date": datetime.date.today().isoformat()},
+        {"name": "Kettlebell Set", "price": 120.0, "date": datetime.date.today().isoformat()},
     ]
 
-
-def get_cart_items() -> List[Dict[str, str]]:
-    """
-    Return a list of items currently in the user's Amazon cart.  Each item
-    includes a name and current Amazon price.
-    """
+def get_cart_items() -> List[Dict]:
+    """Return the current items in the user's shopping cart."""
     return [
-        {
-            "asin": "B08CFSZLQ4",
-            "item": "Bluetooth Headphones",
-            "price": "€59.99",
-        },
-        {
-            "asin": "B07PGL2N7J",
-            "item": "Portable SSD",
-            "price": "€129.95",
-        },
+        {"name": "Wireless Mouse", "price": 25.0, "quantity": 1},
+        {"name": "USB-C Cable", "price": 8.0, "quantity": 2},
     ]
 
-
-def get_wishlist_items() -> List[Dict[str, str]]:
-    """
-    Return a list of items saved for later or on the wishlist.  This
-    provides additional candidates for deal hunting.
-    """
-    return [
-        {
-            "asin": "B09G3HRMVB",
-            "item": "Smartwatch",
-            "price": "€199.99",
-        }
-    ]
+def get_wishlist_items() -> List[str]:
+    """Return a list of item names from the user's wishlist."""
+    return ["Mechanical Keyboard", "Noise Cancelling Headphones", "Fitness Tracker"]
