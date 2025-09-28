@@ -1,0 +1,3 @@
+"""
+Shopping agent package.
+"""
