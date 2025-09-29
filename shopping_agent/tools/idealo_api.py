@@ -53,4 +53,3 @@ def find_lowest_price(item_name: str) -> float:
     base = 100 + len(item_name) * 5
     fluctuation = random.uniform(0.7, 0.9)
     return round(base * fluctuation, 2)
-return None
