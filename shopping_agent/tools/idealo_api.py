@@ -42,4 +42,15 @@ def _extract_price(item_name: str) -> float | None:
     try:
         return float(digits.replace(",", "."))
     except ValueError:
-        return None
+        
+
+def find_lowest_price(item_name: str) -> float:
+    """
+    Return a mocked market lowest price for the given item.
+    Computes a base price based on the length of the item name and applies
+    a random discount between 70% and 90%.
+    """
+    base = 100 + len(item_name) * 5
+    fluctuation = random.uniform(0.7, 0.9)
+    return round(base * fluctuation, 2)
+return None
